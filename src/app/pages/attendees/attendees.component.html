@@ -1,0 +1,122 @@
+<div class="wrapper">
+ 
+    <div class="section section-about-us">
+        <div class="container" *ngIf="!attendees?.length > 0">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+					<div class="panel panel-minimal" style="margin-top:10%;" >
+						<div class="panel-body text-center">
+							<i class="now-ui-icons users_single-02" style="font-size: 6em;"></i>
+						</div>
+						<div class="panel-body text-center">
+							<h1 style="font-weight: 100;" class=" text-center fsize32 mb10 mt0">
+									Aucun participants
+							</h1><br>
+								<button data-invoke="modal" data-modal-id='CreateTicket' data-href="http://attendize.website/event/6864/tickets/create" href='javascript:void(0);'  class=' btn btn-primary mt5 btn-lg' type="button" >
+						<i class="ico-ticket"></i>
+						Inviter
+					</button>
+					<button data-invoke="modal" data-modal-id='CreateTicket' data-href="http://attendize.website/event/6864/tickets/create" href='javascript:void(0);'  class=' btn btn-primary mt5 btn-lg' type="button" >
+						<i class="ico-ticket"></i>
+						Partager
+					</button>
+						</div>
+					</div>
+                </div>
+            </div>
+            <div class="separator separator-primary"></div>
+        </div>
+
+    </div>
+ <div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-4">
+						<h2>Participants :</h2><br>
+					</div>
+					<div class="col-sm-8">						
+						<a href="#" class="btn btn-primary"><i class="material-icons">&#xE24D;</i> <span>Exporter</span></a>
+					</div>
+                </div>
+            </div>
+			<div class="table-filter">
+				<div class="row">
+                    <div class="col-sm-12">
+						<button type="button" class="btn btn-primary"><i class="fa fa-search"></i></button>
+						<div class="filter-group">
+							<label>Nom</label>
+							<input type="text" class="form-control">
+						</div>
+						
+                    </div>
+                </div>
+			</div>
+			<div class="table-responsive">
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Participant</th>
+						<th>Date</th>				
+						<th>Paiement</th>
+						<th>Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a href="#">Michael Holz</a></td>
+                        <td>01/01/20</td>                        
+						<td>$254</td>
+						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>
+					<tr>
+                        <td>2</td>
+                        <td><a href="#"> Paula Wilson</a></td>                  
+						<td>01/01/20</td>
+						<td>$1,260</td>
+						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>
+					<tr>
+                        <td>3</td>
+                        <td><a href="#">Antonio Moreno</a></td>
+                        <td>01/01/20</td>
+						<td>$350</td>
+						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>                        
+                    </tr>
+					<tr>
+                        <td>4</td>
+                        <td><a href="#">Mary Saveley</a></td>
+                        <td>01/01/20</td>						
+						<td>$1,572</td>
+						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>
+					<tr>
+                        <td>5</td>
+                        <td><a href="#">Martin Sommer</a></td>
+                        <td>01/01/20</td>
+						<td>$580</td>
+						<td><a href="#" class="view" title="View Details" data-toggle="tooltip"><i class="material-icons">&#xE5C8;</i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+			</div>
+			<div class="clearfix">
+			<br>
+                <div class="hint-text"> <b>5</b> sur <b>25</b> entrees</div><br><br>
+
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Précédent</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Suivant</a></li>
+                </ul>
+            </div><br><br><br>
+        </div>
+    </div>	
+
+</div>

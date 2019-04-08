@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top" color-on-scroll="500">
+    <div class="container">
+ <!--      <div class="dropdown button-dropdown">
+        <div ngbDropdown>
+          <a class="dropdown-toggle" ngbDropdownToggle>
+              <span class="button-bar"></span>
+              <span class="button-bar"></span>
+              <span class="button-bar"></span>
+          </a>
+           <div ngbDropdownMenu>
+             <a class="dropdown-header">Dropdown header</a>
+             <a class="dropdown-item" href="#">Action</a>
+             <a class="dropdown-item" href="#">Another action</a>
+             <a class="dropdown-item" href="#">Something else here</a>
+             <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="#">Separated link</a>
+             <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="#">One more separated link</a>
+           </div>
+         </div>
+      </div> -->
+        <div class="navbar-translate">
+            <a class="navbar-brand" [routerLink]="['/pages/landing']" placement="bottom">
+               Konnect
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/pages/landing']">
+                      <i class="now-ui-icons shopping_shop"></i>
+                      <p>Accueil</p>
+                  </a>
+              </li>
+                <li class="nav-item" [routerLink]="['/pages/events']"  *ngIf="showItem">
+                    <a class="nav-link">
+                      <i class="now-ui-icons ui-1_calendar-60"></i>
+                      <p>Evenements</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!showItem">
+                    <a class="nav-link" [routerLink]="['/pages/login']">
+                      <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                      <p>Connexion</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!showItem">
+                    <a class="nav-link" [routerLink]="['/pages/register']">
+                      <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                      <p>Créer un compte</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="showItem">
+                    <a class="nav-link">
+                      <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                      <p>Paramêtres</p>
+                    </a>
+                </li>
+				<li class="nav-item" *ngIf="showItem">
+                    <a class="nav-link">
+                      <i class="now-ui-icons users_single-02"></i>
+                      <p>Mon compte</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="showItem">
+                    <a class="nav-link">
+                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <p>Deconnexion</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
