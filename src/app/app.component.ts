@@ -6,7 +6,6 @@ import { DOCUMENT } from '@angular/platform-browser';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { AuthenticationService } from './services';
 import { User } from './models';
 
 @Component({
@@ -21,9 +20,8 @@ export class AppComponent implements OnInit {
     private _router: Subscription;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location,  private authenticationService: AuthenticationService) {
+    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {
 		
-		this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
 	}
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
@@ -50,8 +48,4 @@ export class AppComponent implements OnInit {
         });
     }
 	
-	    logout() {
-        this.authenticationService.logout();
-        this.router.navigate(['/login']);
-    }
 }

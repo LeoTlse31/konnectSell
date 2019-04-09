@@ -1,3 +1,16 @@
+			
+<modal id="custom-modal-1">
+    <div class="modal">
+        <div class="modal-body">
+            <h1>A Custom Modal!</h1>
+            <p>
+                Home page text: <input type="text"/>
+            </p>
+            <button (click)="closeModal('custom-modal-1');">Close</button>
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
 <div class="wrapper">
  
     <div class="section section-about-us" *ngIf="!events?.length > 0">
@@ -15,7 +28,7 @@
 							<h5 style="font-size: 20px; font-weight: 100; line-height: 1.5em;"  class=" pa10 text-primary text-center ">
 									Créer un évènement
 							</h5>
-								<button data-invoke="modal" data-modal-id='CreateTicket' data-href="http://attendize.website/event/6864/tickets/create" href='javascript:void(0);'  class=' btn btn-primary mt5 btn-lg' type="button" >
+								<button (click)="openModal('custom-modal-1')" class=' btn btn-primary mt5 btn-lg' type="button" >
 						<i class="ico-ticket"></i>
 						Créer
 					</button>

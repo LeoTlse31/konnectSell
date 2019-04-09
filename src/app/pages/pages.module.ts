@@ -23,6 +23,9 @@ import { TicketsComponent } from './tickets/tickets.component';
 import { EventsDetailsComponent } from './eventsDetails/eventsDetails.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ModalComponent } from '../directives';
+import { ModalService } from '../services';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
     imports: [
@@ -47,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		EventsDetailsComponent,
 		AttendeesComponent,
 		DiscoverComponent,
+        ModalComponent,
 		RegisterComponent,
 		CheckinComponent,
         PagesComponent,
@@ -55,6 +59,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		TicketsComponent,
 		EventsComponent,
         ProfileComponent
-    ]
+    ],
+    providers: [
+        ModalService
+    ],
 })
 export class PagesModule { }

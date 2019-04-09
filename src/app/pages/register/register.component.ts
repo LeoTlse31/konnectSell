@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import {UserService, AuthenticationService } from '../../services';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,14 +19,10 @@ export class RegisterComponent implements OnInit {
 
     constructor(
         private formBuilder: FormBuilder,
-        private router: Router,
-        private authenticationService: AuthenticationService,
-        private userService: UserService
+        private router: Router
     ) { 
-        // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) { 
-            this.router.navigate(['/']);
-        }
+  
+    
     }
 
     ngOnInit() {
@@ -52,25 +46,4 @@ export class RegisterComponent implements OnInit {
         navbar.classList.remove('navbar-transparent');
     }
 	
-    get f() { return this.registerForm.controls; }
-
-    onSubmit() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-        this.userService.register(this.registerForm.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    this.router.navigate(['/pages/login']);
-                },
-                error => {
-                    this.loading = false;
-                });
-    }
 }
