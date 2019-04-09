@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     errorMessage: string = '';
     returnUrl;
+	loading;
     constructor(
         public authService: AuthService,
         private router: Router,
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
       }
 
     ngOnInit() {
-		
+		this.loading = false;
 		
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('login-page');
@@ -70,10 +71,13 @@ export class LoginComponent implements OnInit {
       }
     
       tryLogin(value){
+		  this.loading = true;
         this.authService.doLogin(value)
         .then(res => {
+			this.loading = false;
           this.router.navigate(['/pages/landing']);
         }, err => {
+			this.loading = false;
           console.log(err);
           this.errorMessage = err.message;
         })
