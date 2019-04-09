@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-
+import { Subject } from 'rxjs/Subject';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { AuthService } from '../../core/auth.service';
 @Component({
     selector: 'app-navbar',
     templateUrl: './navbar.component.html',
@@ -9,15 +12,35 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
-	private showItem: boolean;
-    constructor(public location: Location, private element : ElementRef) {
-        this.sidebarVisible = false;
-		this.showItem = false;
-    }
+    private showItem: boolean;
+    isUserLoggedIn : boolean;
 
+    constructor(public authService : AuthService, public location: Location, private element : ElementRef,public afAuth: AngularFireAuth) {
+        this.sidebarVisible = false;
+        this.showItem = false;
+        this.isUserLoggedIn = false;
+    }
+   
+
+    checkUser() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if(user) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+        this.afAuth.authState.subscribe(res => {
+            if (res && res.uid) {
+             this.isUserLoggedIn = true;
+            } else {
+              this.isUserLoggedIn = false;
+            }
+          });
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;
@@ -54,5 +77,9 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    logout() {
+       this.authService.doLogout();
     }
 }

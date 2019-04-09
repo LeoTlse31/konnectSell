@@ -15,7 +15,15 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 
-import { JwtInterceptor, ErrorInterceptor } from './helpers';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
+import { AuthGuard } from './core/auth.guard';
+import { AuthService } from './core/auth.service';
+import { UserService } from './core/user.service';
+
 
 @NgModule({
     declarations: [
@@ -26,6 +34,9 @@ import { JwtInterceptor, ErrorInterceptor } from './helpers';
         BrowserAnimationsModule,
         NgbModule.forRoot(),
         FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+        AngularFireAuthModule, // imports firebase/auth, only needed for auth features
         RouterModule,
         AppRoutingModule,
         ComponentsModule,
@@ -37,8 +48,7 @@ import { JwtInterceptor, ErrorInterceptor } from './helpers';
       useFactory: adapterFactory
     })
     ],
-    providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    providers: [ AuthService, UserService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

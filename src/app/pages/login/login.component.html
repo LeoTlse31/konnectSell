@@ -4,7 +4,7 @@
     <div class="container">
         <div class="col-md-4 content-center">
             <div class="card card-login card-plain">
-                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="loginForm">
                     <div class="header header-primary text-center">
                         
                             <h2>
@@ -17,23 +17,18 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">  <i class="now-ui-icons users_circle-08"></i></span>
                         </div>
-                          <input type="text"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
-                              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-								<div *ngIf="f.username.errors.required">Username is required</div>
-							</div>
+                          <input formControlName="email" class="form-control" type="email" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+
 					  </div>
                       <div class="input-group form-group-no-border input-lg" [ngClass]="{'input-group-focus':focus1===true}">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
                         </div>
-                          <input type="password" placeholder="Mot de passe" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" (focus)="focus1=true" (blur)="focus1=false"/>
-                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-								<div *ngIf="f.password.errors.required">Password is required</div>
-							</div>
-					  </div>
+                          <input type="password" placeholder="Mot de passe" formControlName="password" class="form-control" (focus)="focus1=true" (blur)="focus1=false"/>
+                        </div>
                     </div>
                     <div class="card-footer text-center form-group">
-						 <button type="submit"class="btn btn-primary btn-round btn-lg btn-block" >Connexion</button>  
+						 <button type="submit"class="btn btn-primary btn-round btn-lg btn-block" (click)="tryLogin(loginForm.value)" >Connexion</button>  
 						 <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
        
                     </div>

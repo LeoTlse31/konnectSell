@@ -18,7 +18,8 @@ import { TicketsComponent } from './pages/tickets/tickets.component';
 import { EventsDetailsComponent } from './pages/eventsDetails/eventsDetails.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 
-import { AuthGuard } from './guards';
+import { UserResolver } from './user/user.resolver';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes =[
     { path: '', redirectTo: 'pages/landing', pathMatch: 'full' },
@@ -28,13 +29,13 @@ const routes: Routes =[
     { path: 'pages/login',       component: LoginComponent },
     { path: 'pages/register',       component: RegisterComponent },
     { path: 'pages/profile',     component: ProfileComponent },
-    { path: 'pages/attendees',     component: AttendeesComponent },	
-	{ path: 'pages/events',     component: EventsComponent },
-	{ path: 'pages/dashboard',     component: DashboardComponent },
-	{ path: 'pages/checkin',     component: CheckinComponent },
+    { path: 'pages/attendees',     component: AttendeesComponent,canActivate: [AuthGuard] },	
+	{ path: 'pages/events',     component: EventsComponent ,canActivate: [AuthGuard]},
+	{ path: 'pages/dashboard',     component: DashboardComponent,canActivate: [AuthGuard]},
+	{ path: 'pages/checkin',     component: CheckinComponent,canActivate: [AuthGuard] },
 	{ path: 'pages/discover',     component: DiscoverComponent },
-	{ path: 'pages/account',     component: AccountComponent },	
-	{ path: 'pages/tickets',     component: TicketsComponent },
+	{ path: 'pages/account',     component: AccountComponent,canActivate: [AuthGuard] },	
+	{ path: 'pages/tickets',     component: TicketsComponent,canActivate: [AuthGuard] },
 	{ path: 'pages/eventsDetails',     component: EventsDetailsComponent }
 ];
 
