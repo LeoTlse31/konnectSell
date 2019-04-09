@@ -1,7 +1,8 @@
+import { ModalService } from '../../services';
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
-
-import { ModalService } from '../../services';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'events',
@@ -10,9 +11,13 @@ import { ModalService } from '../../services';
 })
 export class EventsComponent implements OnInit {
   data : Date = new Date();
-
+   eventForm: FormGroup;
   events = ['Windstorm', 'Bombasto', 'Magneta'];
-  constructor(private modalService: ModalService) {
+  
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private fb: FormBuilder) {
+	      config.backdrop = 'static';
+    config.keyboard = false;
+	   this.createForm();
   }
 
 
@@ -21,13 +26,18 @@ export class EventsComponent implements OnInit {
   ngOnDestroy(){
 	  
   }
-
-  openModal(id: string) {
-    console.log("e")
-      this.modalService.open(id);
+  
+    createForm() {
+        this.eventForm = this.fb.group({
+          name: ['', Validators.required ],
+          description: ['', Validators.required ],
+          starttime: ['', Validators.required ],
+          endtime: ['', Validators.required ]
+        });
+      }
+	  
+  open(content) {
+    this.modalService.open(content);
   }
 
-  closeModal(id: string) {
-      this.modalService.close(id);
-  }
 }

@@ -1,16 +1,54 @@
-			
-<modal id="custom-modal-1">
-    <div class="modal">
-        <div class="modal-body">
-            <h1>A Custom Modal!</h1>
-            <p>
-                Home page text: <input type="text"/>
-            </p>
-            <button (click)="closeModal('custom-modal-1');">Close</button>
-        </div>
-    </div>
-    <div class="modal-background"></div>
-</modal>
+				<ng-template #content let-c="close" let-d="dismiss">
+				<div class="myModal">
+				  <div class="modal-header">
+					<h4 class="modal-title" id="modal-basic-title">Créer un évènement :</h4>
+					<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+					  <span aria-hidden="true">&times;</span>
+					</button>
+				  </div>
+				  <div class="modal-body">
+					<div class="card bg-light">
+					<article class="card-body mx-auto" style="max-width: 400px;">
+
+						<form [formGroup]="eventForm">
+						<div class="input-group form-group-no-border input-lg">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
+							 </div>
+							<input name="" class="form-control"  formControlName="name" placeholder="Full name" type="text">
+						</div> <!-- form-group// -->
+						<div class="input-group form-group-no-border input-lg">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+							 </div>
+							<input name="" class="form-control"  formControlName="description" placeholder="Email address" type="email"  autocomplete="off">
+						</div> <!-- form-group// -->
+						<div class="input-group form-group-no-border input-lg">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-building"></i> </span>
+							</div>
+							<select class="form-control" formControlName="starttime" >
+								<option selected=""> Select job type</option>
+								<option>Designer</option>
+								<option>Manager</option>
+								<option>Accaunting</option>
+							</select>
+						</div> <!-- form-group end.// -->
+						<div class="input-group form-group-no-border input-lg">
+							<div class="input-group-prepend">
+								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+							</div>
+							<input class="form-control" placeholder="Create password" type="password" formControlName="endtime" >
+						</div>                            			                                                
+					</form>
+					</article>
+					</div>
+				  </div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-primary" (click)="c('Save click')">Ajouter</button>
+				  </div>
+				 </div>
+				</ng-template>	
 <div class="wrapper">
  
     <div class="section section-about-us" *ngIf="!(events?.length > 0)">
@@ -53,18 +91,17 @@
 							<h5 style="font-size: 20px; font-weight: 100; line-height: 1.5em;"  class=" pa10 text-primary text-center ">
 									Créer un évènement
 							</h5>
-						<button data-invoke="modal" data-modal-id='CreateTicket' data-href="http://attendize.website/event/6864/tickets/create" href='javascript:void(0);'  class=' btn btn-primary mt5 btn-lg' type="button" >
+						<button (click)="open(content)"  class=' btn btn-primary mt5 btn-lg' type="button" >
 						<i class="ico-ticket"></i>
 						Créer
 					</button>
 						</div>
 					</div>
-                </div>
-
-			
+                </div>		
             </div>
             <div class="separator separator-primary"></div>
         </div>
+		
 <div class="container"  *ngFor="let event of events">
 <div class="row" >
 <div class="twPc-div">
@@ -72,13 +109,6 @@
     <a class="twPc-bg twPc-block"></a>
 
 	<div>
-		<div class="twPc-button">
-         
-            <a href="https://twitter.com/mertskaplan" class="twitter-follow-button" data-show-count="false" data-size="large" data-show-screen-name="false" data-dnt="true">Follow @mertskaplan</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-         
-		</div>
-
 		<a title="Mert S. Kaplan" href="https://twitter.com/mertskaplan" class="twPc-avatarLink">
 			<img alt="Mert S. Kaplan" src="assets/img/logo.jpg" class="twPc-avatarImg">
 		</a>
@@ -95,13 +125,13 @@
 		<div class="twPc-divStats">
 			<ul class="twPc-Arrange">
 				<li class="twPc-ArrangeSizeFit">
-					<a href="https://twitter.com/mertskaplan" title="9.840 Tweet">
+					<a  title="9.840 Tweet">
 						<span class="twPc-StatLabel twPc-block">Participants</span>
 						<span class="twPc-StatValue">0</span>
 					</a>
 				</li>
 				<li class="twPc-ArrangeSizeFit">
-					<a href="https://twitter.com/mertskaplan/following" title="885 Following">
+					<a title="885 Following">
 						<span class="twPc-StatLabel twPc-block">Vente</span>
 						<span class="twPc-StatValue">0 €</span>
 					</a>
