@@ -13,6 +13,7 @@ import { AttendeesComponent } from './pages/attendees/attendees.component';
 import { DiscoverComponent } from './pages/discover/discover.component';
 import { CheckinComponent } from './pages/checkin/checkin.component';
 import { EventsComponent } from './pages/events/events.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { TicketsComponent } from './pages/tickets/tickets.component';
 import { EventsDetailsComponent } from './pages/eventsDetails/eventsDetails.component';
@@ -33,6 +34,7 @@ const routes: Routes =[
 	{ path: 'pages/events',     component: EventsComponent ,canActivate: [AuthGuard]},
 	{ path: 'pages/dashboard',     component: DashboardComponent,canActivate: [AuthGuard]},
 	{ path: 'pages/checkin',     component: CheckinComponent,canActivate: [AuthGuard] },
+	{ path: 'pages/settings',     component: SettingsComponent,canActivate: [AuthGuard] },
 	{ path: 'pages/discover',     component: DiscoverComponent },
 	{ path: 'pages/account',     component: AccountComponent,canActivate: [AuthGuard] },	
 	{ path: 'pages/tickets',     component: TicketsComponent,canActivate: [AuthGuard] },

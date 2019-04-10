@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AccountComponent } from './account/account.component';
 import { CheckinComponent } from './checkin/checkin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SettingsComponent } from './settings/settings.component';
 import { PagesComponent } from './pages.component';
 import { EventsComponent } from './events/events.component';
 import { DiscoverComponent } from './discover/discover.component';
@@ -54,6 +55,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		RegisterComponent,
 		CheckinComponent,
         PagesComponent,
+		SettingsComponent,
 		DashboardComponent,
 		AccountComponent,
 		TicketsComponent,
