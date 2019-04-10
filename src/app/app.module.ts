@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { UserService } from './core/user.service';
+import { EventService } from './core/event.service';
 
 
 
@@ -49,7 +50,7 @@ import { UserService } from './core/user.service';
       useFactory: adapterFactory
     })
     ],
-    providers: [ AuthService, UserService, AuthGuard],
+    providers: [ AuthService, EventService, UserService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

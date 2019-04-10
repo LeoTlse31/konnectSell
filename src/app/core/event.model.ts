@@ -1,4 +1,4 @@
-export class FirebaseEventModel {
+export class Event {
   title: string;          
   description: string;         
   location_venue_name: string;

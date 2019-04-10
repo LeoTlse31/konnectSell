@@ -7,48 +7,184 @@
 					</button>
 				  </div>
 				  <div class="modal-body">
-					<div class="card bg-light">
-					<article class="card-body mx-auto" style="max-width: 400px;">
+					<div class="row">
+						<div class="col-md-12">
+							<form [formGroup]="eventForm" (ngSubmit)="createEvent()">  
+							<div class="form-group">
+								<label for="title" class="control-label required">Nom de l'évènement</label>
+								<input class="form-control"  formControlName="title" name="title" type="text" id="title">
+							</div>
+	
+							<div class="form-group custom-theme">
+								<label for="description" class="control-label required">Description</label>
+								<textarea class="form-control  editable" formControlName="description" rows="5" name="description" cols="50" id="description"></textarea>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="start_date" class="required control-label">Date de début</label>
+										<input formControlName="startdate" class="form-control start hasDatepicker " name="startdate" type="date" id="startdate">
+									</div>
+								</div>
+	
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label for="end_date" class="required control-label ">Date de fin</label>
+	
+										<input formControlName="enddate" class="form-control end hasDatepicker " name="enddate" type="date" id="enddate">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="event_image" class="control-label ">Image de l'évènement (Flyer / Bannière)</label>
+								<div class="styledFile" id="input-event_image">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<span class="btn btn-primary btn-file ">
+						Ajouter <input name="event_image" formControlName="event_image" type="file" >
+					</span>
+				</span>
+			</div>
+		</div>
+	
+							</div>
+	
+							<div class="address-manual" >
+								<h5>
+									Addresse
+								</h5>
+								<div class="form-group">
+									<label for="location_address_line_1" class="control-label">Addresse </label>
+									<input class="form-control location_field" formControlName="adresse" placeholder="E.g: 45 Grafton St." name="location_address_line_1" type="text" id="location_address_line_1">
+								</div>
+	
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="location_state" class="control-label">Ville</label>
+											<input class="form-control location_field" formControlName="ville" placeholder="E.g: Dublin." name="location_state" type="text" id="location_state">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="location_post_code" class="control-label">CP</label>
+											<input class="form-control location_field" formControlName="CP" placeholder="E.g: Dublin." name="location_post_code" type="text" id="location_post_code">
+										</div>
+									</div>
+								</div>
+							</div>
+	
+							<button type="button" class="btn btn-primary" type="submit"         
+							[disabled]="!eventForm.valid">Ajouter</button>
+	
+														<input name="organiser_id" type="hidden" value="7626">
+													</form>
+													</div>
 
-						<form [formGroup]="eventForm">
-						<div class="input-group form-group-no-border input-lg">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-user"></i> </span>
-							 </div>
-							<input name="" class="form-control"  formControlName="name" placeholder="Full name" type="text">
-						</div> <!-- form-group// -->
-						<div class="input-group form-group-no-border input-lg">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-							 </div>
-							<input name="" class="form-control"  formControlName="description" placeholder="Email address" type="email"  autocomplete="off">
-						</div> <!-- form-group// -->
-						<div class="input-group form-group-no-border input-lg">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-building"></i> </span>
-							</div>
-							<select class="form-control" formControlName="starttime" >
-								<option selected=""> Select job type</option>
-								<option>Designer</option>
-								<option>Manager</option>
-								<option>Accaunting</option>
-							</select>
-						</div> <!-- form-group end.// -->
-						<div class="input-group form-group-no-border input-lg">
-							<div class="input-group-prepend">
-								<span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-							</div>
-							<input class="form-control" placeholder="Create password" type="password" formControlName="endtime" >
-						</div>                            			                                                
-					</form>
-					</article>
 					</div>
 				  </div>
-				  <div class="modal-footer">
-					<button type="button" class="btn btn-primary" (click)="c('Save click')">Ajouter</button>
-				  </div>
+
 				 </div>
-				</ng-template>	
+                </ng-template>	
+                <ng-template #content2 let-c="close" let-d="dismiss">
+                    <div class="myModal">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Create Organiser :</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+						<section class="container">
+							<div class="row">
+				<div class="col-md-12">
+					<div class="panel">
+						<div class="panel-body">
+							<form [formGroup]="orgaForm">
+													<div class="alert alert-info">
+														Avant de créer des événements, vous devez créer un organisateur. Un organisateur est simplement celui qui organise l'événement. Cela peut être n'importe qui, d'une personne à une organisation.
+
+								</div>
+							
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="name" class="required control-label ">Nom</label>
+										<input class="form-control" name="name" type="text" id="name">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="email" class="control-label required">Organiser Email</label>
+										<input class="form-control " placeholder="" name="email" type="text" id="email">
+									</div>
+								</div>
+							</div>
+		
+		
+		
+		
+							<div class="form-group">
+								<label for="about" class="control-label ">Organiser Description</label>
+								<textarea class="form-control " placeholder="" rows="4" name="about" cols="50" id="about"></textarea>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="facebook" class="control-label ">Organiser Facebook</label>
+		
+										<div class="input-group">
+											<span style="background-color: #eee;" class="input-group-addon">facebook.com/</span>
+											<input class="form-control " placeholder="Username" name="facebook" type="text" id="facebook">
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="twitter" class="control-label ">Organiser Twitter</label>
+		
+										<div class="input-group">
+											<span style="background-color: #eee;" class="input-group-addon">twitter.com/</span>
+											<input class="form-control " placeholder="Username" name="twitter" type="text" id="twitter">
+										</div>
+									</div>
+								</div>
+							</div>
+		
+							<div class="form-group">
+								<label for="organiser_logo" class="control-label ">Organiser Logo</label>
+								<div class="styledFile" id="input-organiser_logo">
+				<div class="input-group">
+					<span class="input-group-btn">
+						<span class="btn btn-primary btn-file ">
+							Browse&hellip; <input name="organiser_logo" type="file" >
+						</span>
+					</span>
+					<input type="text" class="form-control" readonly>
+					<span style="display: none;" class="input-group-btn btn-upload-file">
+						<span class="btn btn-success ">
+							Upload
+						</span>
+					</span>
+				</div>
+			</div>
+							</div>
+		
+							<input class=" btn-block btn btn-primary" type="submit" value="Create Organiser">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+					</section>
+		
+		            
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" (click)="c('Save click')">Ajouter</button>
+                      </div>
+                     </div>
+                    </ng-template>	
 <div class="wrapper">
  
     <div class="section section-about-us" *ngIf="!(events?.length > 0)">
@@ -83,7 +219,7 @@
         <div class="container"  *ngIf="events?.length > 0">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
-					<div class="panel panel-minimal" style="margin-top:10%;">
+					<div class="panel panel-minimal" style="margin-top:15%;">
 						<div class="panel-body text-center">
 							<h1 style="font-weight: 100;" class=" text-center fsize32 mb10 mt0">
 									Vos évènements
@@ -102,7 +238,7 @@
             <div class="separator separator-primary"></div>
         </div>
 		
-<div class="container"  *ngFor="let event of events">
+<div class="container"  *ngFor="let event of eventList">
 <div class="row" >
 <div class="twPc-div">
 
@@ -115,7 +251,7 @@
 
 		<div class="twPc-divUser">
 			<div class="twPc-divName">
-				<a>Rave On!</a>
+				<a>{{event.payload.doc.data().title}}</a>
 			</div>
 			<span>
 				<a href="https://twitter.com/mertskaplan">By<span>Fall Industry</span></a>

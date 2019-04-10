@@ -1,13 +1,90 @@
 <div class="wrapper">
-    <div class="section section-about-us">
+    <div class="section section-about-us"><br><br>
         <div class="container">
+            <h1>Réglages</h1>
+              <hr>
             <div class="row">
-                <div class="col-md-12 ml-auto mr-auto text-center">
-
+              <!-- left column -->
+              <div class="col-md-3">
+                <div class="text-center">
+                  <img src="assets/img/logo.jpg" class="avatar img-circle" alt="avatar">
+                  <h6>Changer d'image...</h6>
+                  
+                  <input type="file" class="form-control">
                 </div>
-            </div>
-            <div class="separator separator-primary"></div>
+              </div>
+              
+              <!-- edit form column -->
+              <div class="col-md-9 personal-info">
+                <!--  <div class="alert alert-info alert-dismissable">
+                  <a class="panel-close close" data-dismiss="alert">×</a> 
+                  <i class="fa fa-coffee"></i>
+                  This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                </div>-->
+                <h3>Information du compte</h3>
+                
+                <form class="form-horizontal" formGroup="eventForm">
+                    <div class="form-group">
+                        <label for="enable_organiser_page" class="control-label required">
+                            Activer la page d'organisateur publique</label>
+                        <select class="form-control" id="enable_organiser_page" name="enable_organiser_page"><option value="1" selected="selected">Make organiser page visible to the public.</option><option value="0">Hide organiser page from the public.</option></select>
+                        <div class="help-block">
+                            
+Les pages de l'organisateur contiennent une liste publique des événements passés et à venir.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="required control-label ">Nom d'organisateur</label>
+                        <input class="form-control" name="name" type="text" value="azeaeaea" id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label required">Email de l'organisateur</label>
+                        <input class="form-control " placeholder="" name="email" type="text" value="azeazeaz@gmail.com" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="about" class="control-label ">Description</label>
+                        <textarea class="form-control " placeholder="" rows="4" name="about" cols="50" id="about"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="facebook" class="control-label ">Lien page Facebook</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">facebook.com/</span>
+                                    <input class="form-control " placeholder="Username" name="facebook" type="text" value="eze" id="facebook">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="twitter" class="control-label ">Lien profil Twitter</label>
+
+                                <div class="input-group">
+                                    <span class="input-group-addon">twitter.com/</span>
+                                    <input class="form-control " placeholder="Username" name="twitter" type="text" value="" id="twitter">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="organiser_logo" class="control-label ">Logo de la page</label><a style="margin-left: 4px;font-size: 11px;" href="javascript:showHelp('We recommend a square image, as this will look best on printed tickets and event pages.');" ><i class="ico ico-question "></i></a>
+                        <div class="styledFile" id="input-organiser_logo">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-primary btn-file ">
+                    Ajouter&hellip; <input name="organiser_logo" type="file" >
+                </span>
+            </span>
         </div>
+    </div></div>
+                  
+    <button class="btn btn-primary" type="submit" >Enregistrer</button>
+                </form>
+              </div>
+          </div>
+        </div>
+        <hr>
     </div>
 	
 <!--     <div class="section section-team text-center">

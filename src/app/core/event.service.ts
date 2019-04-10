@@ -20,7 +20,7 @@ export class EventService {
   });
 
   //Firestore CRUD actions example
-  createCoffeeOrder(data) {
+  createEventOrder(data) {
     return new Promise<any>((resolve, reject) => {
       this.firestore
         .collection("Event")
@@ -29,18 +29,18 @@ export class EventService {
     });
   }
 
-  updateCoffeeOrder(data) {
+  updateEventOrder(data) {
     return this.firestore
       .collection("Event")
       .doc(data.payload.doc.id)
       .set({ completed: true }, { merge: true });
   }
 
-  getCoffeeOrders() {
+  getEventOrders() {
     return this.firestore.collection("Event").snapshotChanges();
   }
 
-  deleteCoffeeOrder(data) {
+  deleteEventOrder(data) {
     return this.firestore
       .collection("Event")
       .doc(data.payload.doc.id)
