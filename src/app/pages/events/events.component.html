@@ -187,7 +187,7 @@
                     </ng-template>	
 <div class="wrapper">
  
-    <div class="section section-about-us" *ngIf="!(events?.length > 0)">
+    <div class="section section-about-us" *ngIf="!(eventList?.length > 0)">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
@@ -202,7 +202,7 @@
 							<h5 style="font-size: 20px; font-weight: 100; line-height: 1.5em;"  class=" pa10 text-primary text-center ">
 									Créer un évènement
 							</h5>
-								<button (click)="openModal('custom-modal-1')" class=' btn btn-primary mt5 btn-lg' type="button" >
+								<button (click)="open(content)" class=' btn btn-primary mt5 btn-lg' type="button" >
 						<i class="ico-ticket"></i>
 						Créer
 					</button>
@@ -216,7 +216,7 @@
         </div>
 		
     </div>
-        <div class="container"  *ngIf="events?.length > 0">
+        <div class="container"  *ngIf="eventList?.length > 0">
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto text-center">
 					<div class="panel panel-minimal" style="margin-top:15%;">
